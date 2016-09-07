@@ -1,5 +1,5 @@
 CC = gcc
-OBJS = SPConfig_Unit_Test.o SPConfig.o
+OBJS = SPConfig_unit_test.o SPConfig.o
 EXEC = sp_config_unit_test
 TESTS_DIR = ./unit_test
 COMP_FLAG = -std=c99 -Wall -Wextra \
