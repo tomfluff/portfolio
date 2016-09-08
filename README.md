@@ -6,6 +6,7 @@ Refer to the `.md` file in each folder for more information about the projects t
 
 ### Project list
 1. Python (`./python`)
+ * Assorted Assignments
 2. Java (`./java`)
  * Red Black Tree
  * Binomial Heap
