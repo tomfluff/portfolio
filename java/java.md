@@ -17,3 +17,12 @@ Using three included files (`BX-...`), creates a book recommentation system. A t
 
 ##Monomial / Polynomial (`./MonoPoly`)
 A class for each, including several utility methods. A tester is included in the folder.
+
+##IP Address Creation Factory (`./IPAddress`)
+A simple project, practicing working with interfaces and factory (object creation) class.
+
+##Text File Compare (`./HistFileSim`)
+Using a custome built Histogram (utilizing java generics) data structure the program receives a folder destination, checks all text files in it and compares them. Includes a tester for the file compare and histogram data structure.
+
+##GUI Trivia (`./GUITrivia`)
+A project using java GUI functionalities. Includes a questions file (`sample_questions.txt`).
