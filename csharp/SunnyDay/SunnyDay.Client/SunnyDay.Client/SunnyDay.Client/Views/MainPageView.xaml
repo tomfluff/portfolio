@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SunnyDay.Client.Controls;"
+             xmlns:converters="clr-namespace:SunnyDay.Client.Converters;"
+             x:Name="MainPage"
+             x:Class="SunnyDay.Client.Views.MainPageView" Title="{Binding Title}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:SpfValueEnumConvert x:Key="SpfValueEnumConvert"></converters:SpfValueEnumConvert>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#fffafa">
+        <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="0" BackgroundColor="#f2f2f2" HeightRequest="80"
+                         Orientation="Horizontal" x:Name="WeatherStack" Padding="0">
+                <Image Source="{Binding WeatherImage}" WidthRequest="64" HeightRequest="64" HorizontalOptions="Start"
+                       VerticalOptions="CenterAndExpand" Margin="6,0,10,0">
+                </Image>
+                <StackLayout Spacing="0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                    <Label Text="{Binding WeatherText}" FontAttributes="Bold" FontSize="Small" TextColor="Black">
+                    </Label>
+                    <Label Text="{Binding WeatherLocation}" FontSize="Micro" TextColor="Black">
+                    </Label>
+                    <Label Text="{Binding WeatherDate}" FontSize="Micro" TextColor="Black">
+                    </Label>
+                </StackLayout>
+              <Button Image="Images/arrow_circle_right.png" BackgroundColor="Transparent" Margin="0"
+                      VerticalOptions="FillAndExpand" HorizontalOptions="End" WidthRequest="42" HeightRequest="80"
+                      AbsoluteLayout.LayoutBounds="-1,-1,-1,1" AbsoluteLayout.LayoutFlags="HeightProportional"
+                      Command="{Binding RefreshCommand}" IsEnabled="{Binding IsNotBusy}"></Button>
+            </StackLayout>
+            <ListView Grid.Row="1" ItemsSource="{Binding SubUsers}"
+                      SeparatorVisibility="Default" RowHeight="64" BackgroundColor="#e0e0e0">
+                <ListView.Header>
+                    <Grid AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                          AbsoluteLayout.LayoutBounds="0,0,1,-1" Padding="0,8,0,0" BackgroundColor="#fffafa"
+                          RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto">
+                            </RowDefinition>
+                            <RowDefinition Height="Auto">
+                            </RowDefinition>
+                            <RowDefinition Height="Auto">
+                            </RowDefinition>
+                            <RowDefinition Height="2">
+                              <!--Seperator Row-->
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" x:Name="ProfileSumStack" Margin="10,0,10,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding Path=MainUser.UserProfileImage}" HorizontalOptions="Start"
+                                   VerticalOptions="CenterAndExpand" Margin="0,0,8,0" HeightRequest="48"
+                                   WidthRequest="48">
+                            </Image>
+                            <Label Grid.Column="1" Text="{Binding Path=MainUser.Name}" VerticalOptions="CenterAndExpand"
+                                   FontAttributes="Bold"
+                                   FontSize="Medium" TextColor="Black" LineBreakMode="TailTruncation">
+                            </Label>
+                            <StackLayout Grid.Column="2" Orientation="Horizontal" VerticalOptions="CenterAndExpand"
+                                         HorizontalOptions="End">
+                                <Label Text="{Binding Path=MainUser.SpfLevel}" FontSize="Large" TextColor="Black">
+                                </Label>
+                                <Label Text="SPF" FontSize="Small" VerticalTextAlignment="Center" TextColor="Black">
+                                </Label>
+                            </StackLayout>
+                        </Grid>
+                        <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="32,12,32,0">
+                          <AbsoluteLayout x:Name="VisualUvElement"
+                                        WidthRequest="100" HeightRequest="100"
+                                        HorizontalOptions="StartAndExpand">
+                            <BoxView Color="Gray"
+                                     AbsoluteLayout.LayoutFlags="All"
+                                     AbsoluteLayout.LayoutBounds="0.5,0.5,1,1">
+                            </BoxView>
+                            <BoxView Color="{Binding CurrUvColor}" HeightRequest="{Binding CurrUvDisplayHeight}"
+                                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                     AbsoluteLayout.LayoutBounds=".5,1,1,-1">
+                            </BoxView>
+                            <StackLayout Orientation="Horizontal" AbsoluteLayout.LayoutFlags="PositionProportional"
+                                         AbsoluteLayout.LayoutBounds="0.5,0.5">
+                              <Label Text="{Binding CurrUvLevel}" TextColor="White" FontAttributes="Bold"
+                                     Margin="16,0,0,0">
+                                <Label.FontSize>
+                                  <OnPlatform x:TypeArguments="x:Double">
+                                    <OnPlatform.iOS>48</OnPlatform.iOS>
+                                    <OnPlatform.Android>48</OnPlatform.Android>
+                                    <OnPlatform.WinPhone>36</OnPlatform.WinPhone>
+                                  </OnPlatform>
+                                </Label.FontSize>
+                              </Label>
+                              <Label Text="UV" TextColor="White" FontSize="Small" VerticalTextAlignment="Center">
+                              </Label>
+                            </StackLayout>
+                          </AbsoluteLayout>
+                          <StackLayout Orientation="Vertical" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+                            <Label Text="Daily Exposure" FontSize="Medium"></Label>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                              <Label Text="{Binding DailyExposure}" FontSize="Large" VerticalTextAlignment="Center"></Label>
+                              <Label Text="minutes" FontSize="Small" VerticalTextAlignment="Center"></Label>
+                            </StackLayout>
+                          </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Row="2" Margin="16,10,0,10" Orientation="Vertical" Spacing="0">
+                            <Label Text="{Binding Path=MainUser.DisplayAlarm}" HorizontalOptions="CenterAndExpand"
+                                   TextColor="Black" VerticalTextAlignment="Center" Margin="0,0,16,0">
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.iOS>58</OnPlatform.iOS>
+                                        <OnPlatform.Android>58</OnPlatform.Android>
+                                        <OnPlatform.WinPhone>46</OnPlatform.WinPhone>
+                                    </OnPlatform>
+                                </Label.FontSize>
+                            </Label>
+                            <StackLayout Orientation="Horizontal">
+                              <Label Text="Toggle sun-burn alerts:" HorizontalOptions="StartAndExpand" 
+                                     VerticalOptions="Center" VerticalTextAlignment="Center"></Label>
+                              <Switch IsToggled="{Binding Path=MainUser.IsAlarmActive}" HorizontalOptions="End"
+                                    IsEnabled="{Binding IsNotBusy}" VerticalOptions="Center">
+                              </Switch>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView Grid.Row="3" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                                 Color="#f2f2f2">
+                        </BoxView>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                          <ViewCell.ContextActions>
+                            <MenuItem Text="Delete" Command="{Binding Path=BindingContext .DeleteSubUserCommand, Source={x:Reference Name=MainPage}}"
+                                      CommandParameter="{Binding .}"></MenuItem>
+                            <MenuItem Text="Edit" Command="{Binding Path=BindingContext .EditSubUserCommand, Source={x:Reference Name=MainPage}}"
+                                      CommandParameter="{Binding .}"></MenuItem>
+                          </ViewCell.ContextActions>
+                            <Grid ColumnSpacing="0" RowSpacing="0" BackgroundColor="#f7f7f7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <AbsoluteLayout Grid.Column="0" WidthRequest="40" HeightRequest="64">
+                                  <BoxView Color="{Binding SkinToneColor}" 
+                                           AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                                  </BoxView>
+                                  <StackLayout Orientation="Vertical" Spacing="0"
+                                               AbsoluteLayout.LayoutBounds=".5,.5" AbsoluteLayout.LayoutFlags="PositionProportional">
+                                    <Label Text="{Binding SpfLevel}" TextColor="{Binding SpfLevelTextColor}" FontSize="16" FontAttributes="Bold"
+                                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                    <Label Text="SPF" TextColor="{Binding SpfLevelTextColor}" FontSize="12"
+                                           VerticalTextAlignment="Center" HorizontalTextAlignment="Center"></Label>
+                                  </StackLayout>
+                                </AbsoluteLayout>
+                                <Label Grid.Column="1" Text="{Binding Name}" TextColor="Black" FontSize="Medium"
+                                       VerticalTextAlignment="Center" Margin="10,0,6,0" LineBreakMode="TailTruncation">
+                                </Label>
+                                <Label Grid.Column="2" Text="{Binding DisplayAlarm}" TextColor="Black" FontSize="Medium"
+                                       VerticalTextAlignment="Center" Margin="0,0,6,0">
+                                </Label>
+                                <Switch Grid.Column="3" IsToggled="{Binding IsAlarmActive}" VerticalOptions="Center" IsEnabled="{Binding Path=BindingContext .IsNotBusy, Source={x:Reference Name=MainPage}}"></Switch>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Button Text="ADD MEMBER" AbsoluteLayout.LayoutBounds="-1,-1,1,35"
+                            AbsoluteLayout.LayoutFlags="WidthProportional"
+                            BackgroundColor="#bbbbbb" BorderColor="#bbbbbb" 
+                            TextColor="White" FontSize="Medium" Command="{Binding SubUserCreateCommand}">
+                    </Button>
+                </ListView.Footer>
+            </ListView>
+            <!--End content grid-->
+        </Grid>
+        <!--End main grid-->
+      <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+            RowSpacing="0" IsVisible="{Binding IsSubUserEditVisible}">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="45*"></RowDefinition>
+          <RowDefinition Height="55*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <BoxView Grid.Row="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                 Color="Black" Opacity=".5"></BoxView>
+        <StackLayout Grid.Row="1" BackgroundColor="#fffafa" 
+                     AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                     Spacing="0" Padding="16">
+          <StackLayout Orientation="Vertical" Spacing="10">
+            <Entry Text="{Binding Path=CurrentSubUserEdit.NameEdit}" HorizontalOptions="FillAndExpand"></Entry>
+            <StackLayout Orientation="Horizontal">
+              <AbsoluteLayout LayoutBounds="0,0,1,-1" LayoutFlags="PositionProportional,WidthProportional" HorizontalOptions="FillAndExpand">
+                <BoxView Color="{Binding Path=CurrentSubUserEdit.SkinToneColorEdit}" AbsoluteLayout.LayoutBounds="0,0,72,90" AbsoluteLayout.LayoutFlags="PositionProportional"></BoxView>
+                <Button Text="RETAKE" TextColor="White" BackgroundColor="Black" Opacity=".6"
+                        AbsoluteLayout.LayoutBounds="0,1,72,36" AbsoluteLayout.LayoutFlags="PositionProportional"
+                        BorderColor="Black" Command="{Binding SubUserRetakePhotoCommand}"></Button>
+                <StackLayout AbsoluteLayout.LayoutBounds="87,0,.7,1"
+                       AbsoluteLayout.LayoutFlags="YProportional,SizeProportional">
+                  <Label Text="{Binding Path=CurrentSubUserEdit.SkinToneText}"></Label>
+                  <Label Text="{Binding Path=CurrentSubUserEdit.SkinToneRemarks}"></Label>
+                </StackLayout>
+              </AbsoluteLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Label Text="SPF Protection Level:" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"></Label>
+              <controls:BindablePicker ItemsSource="{Binding AllSpfValues}"
+                           SelectedItem="{Binding Path=CurrentSubUserEdit.SpfLevelEdit, Mode=TwoWay, 
+                           Converter={StaticResource SpfValueEnumConvert}}">
+              </controls:BindablePicker>
+            </StackLayout>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="CenterAndExpand" Margin="0,16,0,0">
+            <Button Text="CANCEL" TextColor="Maroon" BorderColor="Maroon" Command="{Binding CancelEditSubUserCommand}"></Button>
+            <Button Text="SAVE" TextColor="Green" BorderColor="Green" Command="{Binding SaveEditSubUserCommand}"></Button>
+          </StackLayout>
+        </StackLayout>
+      </Grid>
+     <!--Info Area-->
+    <Grid IsVisible="{Binding InfoDisplay}" AbsoluteLayout.LayoutBounds="1,1,1,1"
+          AbsoluteLayout.LayoutFlags="All"
+          VerticalOptions="EndAndExpand"
+          BackgroundColor="{Binding InfoColor}" ColumnSpacing="0" RowSpacing="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <StackLayout Grid.Row="1" Grid.Column="0" Padding="6">
+        <Label Text="{Binding InfoMessage}"
+               HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+               LineBreakMode="WordWrap"
+               TextColor="White">
+        </Label>
+      </StackLayout>
+      <Button Grid.Row="1" Grid.Column="1" Text="X"
+              HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+              TextColor="White" BorderColor="Transparent" BorderWidth="0"
+              Command="{Binding CloseInfoCommand}" IsEnabled="{Binding IsNotBusy}">
+      </Button>
+    </Grid>
+        <!--Activity Indocator-->
+        <StackLayout IsVisible="{Binding IsBusy}"
+                     Padding="32"
+                     AbsoluteLayout.LayoutFlags="PositionProportional"
+                     AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                     BackgroundColor="#90000000">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" />
+            <Label Text="Loading..." HorizontalOptions="Center" TextColor="White" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

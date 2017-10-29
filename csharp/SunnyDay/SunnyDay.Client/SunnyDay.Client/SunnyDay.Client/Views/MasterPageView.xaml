@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="SunnyDay.Client.Views.MasterPageView"
+                  Title="{Binding Title}" IsGestureEnabled="True" MasterBehavior="Popover">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" BackgroundColor="#00B2EE">
+            <StackLayout Orientation="Vertical">
+                <ListView RowHeight="60" SeparatorVisibility="None" BackgroundColor="#e8e8e8"
+                          ItemsSource="{Binding PagesList}" ItemSelected="Navigation_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal"
+                                             VerticalOptions="FillAndExpand"
+                                             Padding="20,10,0,10" Spacing="20">
+                                    <StackLayout.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+                                    </StackLayout.Margin>
+
+                                    <Image Source="{Binding Icon}" WidthRequest="32" HeightRequest="32"
+                                           VerticalOptions="Center">
+                                    </Image>
+                                    <Label Text="{Binding Title}" VerticalOptions="Center" TextColor="Black"
+                                           VerticalTextAlignment="Center">
+                                        <Label.FontSize>
+                                            <OnPlatform x:TypeArguments="x:Double" WinPhone="18" Android="20" iOS="18" />
+                                        </Label.FontSize>
+                                    </Label>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <!-- Detail page part -->
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

@@ -1,0 +1,11 @@
+email@email.com
+userName
+password
+tips:If you use the right amount of sunscreen, you could fill an entire shot glass:::You should avoid being exposed to the sun between the hours 10 AM and 2 PM:::When picking up cosmetic products, look for ones that offer UV protection:::You are more exposed in environments of sand, snow, concrete, and water, since UV rays bounce off these materials:::You should always keep infants and young children out of direct sun exposure:::It is recommended to reapply sunscreen after taking a swim:::It is recommended to wear a hat with a wide brim to shade the face, head, ears, and neck:::Wear sunglasses that block both UVA and UVB:::Before applying it, you should check the sunscreen's expiration date
+Skin Tone Text for skin #0:Your skin is very fair and you burn easily.
+Skin Tone Text for skin #1:You have pale peach skin tone. Your hair is probably blond or red and you have blue or green eyes and freckles. You burn easily.
+Skin Tone Text for skin #2:You have peach skin tone. Your hair is probably blond or red and you have blue, green or hazel eyes and freckles. You burn easily.
+Skin Tone Text for skin #3:You have light skin tone. You burn easly and tan uniformly.
+Skin Tone Text for skin #4:You have moderate brown skin tone. You burn minimally and tan well.
+Skin Tone Text for skin #5:You have dark brown skin tone. You burn rarely and tan easily.
+Skin Tone Text for skin #6:You have deeply pigmented dark brown skin tone. You never burn and always tan.

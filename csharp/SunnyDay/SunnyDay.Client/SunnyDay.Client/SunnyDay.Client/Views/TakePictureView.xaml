@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SunnyDay.Client.Views.TakePictureView"
+             xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             Title="{Binding Title}">
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#fffafa">
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+            </Grid.RowDefinitions>
+          <cv:CarouselViewControl Grid.Row="0" Orientation="Horizontal" InterPageSpacing="0" Position="0" ItemsSource="{Binding Instructions}" 
+                                   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ShowIndicators="True" >
+            <cv:CarouselViewControl.ItemTemplate>
+              <DataTemplate>
+                <Grid BackgroundColor="#fffafa">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="26"/>
+                  </Grid.RowDefinitions>
+                  <Image Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFill" VerticalOptions="Center" HorizontalOptions="Center" />
+                  <StackLayout Grid.Row="1" Padding="6" Margin="16,0">
+                    <Label Text="{Binding Text}" TextColor="#515151" FontSize="Small"
+                            HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                  </StackLayout>
+                </Grid>
+              </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+          </cv:CarouselViewControl>
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5" Margin="10,10,10,26"
+                         HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
+                <Button
+                    x:Name="TakeNewPicture"
+                    Text="Take a Picture" BorderColor="Teal" TextColor="Teal"
+                    Command="{Binding TakePictureCommand}"
+                    IsEnabled="True" />
+            </StackLayout>
+        </Grid>
+      <Grid AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" IsVisible="{Binding ShowResults}"
+            RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <BoxView Grid.Row="0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                 Color="Black" Opacity=".5"></BoxView>
+        <StackLayout Grid.Row="1" Orientation="Vertical" BackgroundColor="#fffafa" Padding="10" Spacing="15">
+          <Label Text="IS THIS YOUR COLOR?" HorizontalOptions="CenterAndExpand" FontSize="Large"></Label>
+          <StackLayout Orientation="Horizontal" Padding="10,0">
+            <AbsoluteLayout LayoutBounds="0,0,1,-1" LayoutFlags="PositionProportional,WidthProportional" HorizontalOptions="FillAndExpand">
+              <BoxView Color="{Binding Path=SkinToneColor}" AbsoluteLayout.LayoutBounds="0,0,72,90" AbsoluteLayout.LayoutFlags="PositionProportional"></BoxView>
+              
+              <StackLayout AbsoluteLayout.LayoutBounds="87,0,.7,1"
+                     AbsoluteLayout.LayoutFlags="YProportional,SizeProportional">
+                <Label Text="{Binding Path=SkinToneText}"></Label>
+                <Label Text="{Binding Path=SkinToneRemarks}"></Label>
+              </StackLayout>
+            </AbsoluteLayout>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="{Binding Path=SpfLevel, StringFormat='Should use {0} SPF protection level'}" FontSize="16" FontAttributes="Bold"></Label>
+          </StackLayout>
+          <StackLayout Orientation="Horizontal">
+            <Button Text="NO" TextColor="Maroon" BorderColor="Maroon" Command="{Binding CancelResultDisplayCommand}" HorizontalOptions="StartAndExpand" IsEnabled="{Binding IsNotBusy}"></Button>
+            <Button Text="YES, CONTINUE" TextColor="Green" BorderColor="Green" Command="{Binding SaveAndContinueCommand}" HorizontalOptions="End" IsEnabled="{Binding IsNotBusy}"></Button>
+          </StackLayout>
+        </StackLayout>
+        <BoxView Grid.Row="2" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"
+                 Color="Black" Opacity=".5"></BoxView>
+      </Grid>
+      <!--Info Area-->
+      <Grid IsVisible="{Binding InfoDisplay}" AbsoluteLayout.LayoutBounds="1,1,1,1"
+            AbsoluteLayout.LayoutFlags="All"
+            VerticalOptions="EndAndExpand"
+            BackgroundColor="{Binding InfoColor}" ColumnSpacing="0" RowSpacing="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="1" Grid.Column="0" Padding="6">
+          <Label Text="{Binding InfoMessage}"
+                 HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                 VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                 LineBreakMode="WordWrap"
+                 TextColor="White">
+          </Label>
+        </StackLayout>
+        <Button Grid.Row="1" Grid.Column="1" Text="X"
+                HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                TextColor="White" BorderColor="Transparent" BorderWidth="0"
+                Command="{Binding CloseInfoCommand}" IsEnabled="{Binding IsNotBusy}">
+        </Button>
+      </Grid>
+      <!--Activity Indocator-->
+      <StackLayout IsVisible="{Binding IsBusy}"
+                   Padding="32"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                   BackgroundColor="#90000000">
+        <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" />
+        <Label Text="Loading..." HorizontalOptions="Center" TextColor="White" />
+      </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SunnyDay.Client.Views.LoginView"
+             Title="{Binding Title}">
+    <ContentView>
+        <AbsoluteLayout BackgroundColor="#fffafa" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds=".5,.4"
+                         AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Image Source="Images/sunnyday_logo.png" WidthRequest="180"
+                       HorizontalOptions="Center">
+                </Image>
+                <Label Text="SunnyDay"
+                       AbsoluteLayout.LayoutFlags="XProportional"
+                       FontSize="Large" TextColor="#515151" HorizontalOptions="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <OnPlatform.WinPhone>/Assets/Fonts/Pacifico-Regular.ttf#Pacifico</OnPlatform.WinPhone>
+                            <OnPlatform.Android>Pacifico-Regular.ttf#Pacifico-Regular</OnPlatform.Android>
+                            <OnPlatform.iOS>Pacifico-Regular</OnPlatform.iOS>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Button Text="Login with Facebook"
+                        Command="{Binding FacebookLoginCommand}"
+                        BackgroundColor="#3B5998"
+                        BorderColor="#3B5998" BorderRadius="3" BorderWidth="3"
+                        TextColor="White"
+                        Margin="0,32,0,0"
+                        FontSize="14"
+                        IsEnabled="{Binding IsNotBusy}">
+                </Button>
+            </StackLayout>
+          <!--Info Area-->
+          <Grid IsVisible="{Binding InfoDisplay}" AbsoluteLayout.LayoutBounds="1,1,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="EndAndExpand"
+                BackgroundColor="{Binding InfoColor}" ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1" Grid.Column="0" Padding="6">
+              <Label Text="{Binding InfoMessage}"
+                     HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                     VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                     LineBreakMode="WordWrap"
+                     TextColor="White">
+              </Label>
+            </StackLayout>
+            <Button Grid.Row="1" Grid.Column="1" Text="X"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                    TextColor="White" BorderColor="Transparent" BorderWidth="0"
+                    Command="{Binding CloseInfoCommand}" IsEnabled="{Binding IsNotBusy}">
+            </Button>
+          </Grid>
+          <!--Activity Indocator-->
+          <StackLayout IsVisible="{Binding IsBusy}"
+                       Padding="32"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                       BackgroundColor="#90000000">
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="White" />
+            <Label Text="Loading..." HorizontalOptions="Center" TextColor="White" />
+          </StackLayout>
+        </AbsoluteLayout>
+    </ContentView>
+</ContentPage>
