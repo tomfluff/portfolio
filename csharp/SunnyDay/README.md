@@ -1,11 +1,9 @@
-# SunnyDay (Production Repository)
+# SunnyDay
+Monitor your sun exposure with a user-friendly application. With advanced image processing algorithms and the Microsoft Band, we offer real-time sun protection that will keep you safe.
 
-#### General Links
-* [Xamarin Forms controlls on different platforms](http://cdn1.xamarin.com/webimages/images/infographics/xamarin-mobile-controls-infographic-062014.pdf)
-* [Getting started with Xamarin Forms](https://developer.xamarin.com/guides/xamarin-forms/getting-started/)
-* [Band access skeleton](https://github.com/joescars/Xamarin.Forms-Microsoft-Band)
+Application webpage can be found here https://sunnydayw8w.wixsite.com/sunnyday with full documentation.
 
-#### Xamarin Plugins
+#### Xamarin Plugins Used
 * [Settings Plugin](https://github.com/jamesmontemagno/SettingsPlugin)
 * [Connectivity Plugin](https://github.com/jamesmontemagno/ConnectivityPlugin)
 * [Media Plugin](https://github.com/jamesmontemagno/MediaPlugin)
@@ -17,7 +15,7 @@
 * [Microsoft Band SDK - Xamarin](https://github.com/mattleibow/Microsoft-Band-SDK-Bindings)
 * [Azure Mobile App Client](https://github.com/Azure/azure-mobile-apps-net-client/)
 
-#### Xamarin Custome Layouts
+#### Xamarin Custome Layouts Used
 * [Pull to Refresh iOS/Android](https://github.com/jamesmontemagno/Xamarin.Forms-PullToRefreshLayout)
 * [Bindable Picker](https://github.com/Oceanware/XamarinFormsBindablePicker)
 * [Carousel View Control](https://github.com/alexrainman/CarouselView)
