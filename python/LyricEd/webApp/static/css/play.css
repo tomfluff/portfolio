@@ -1,0 +1,200 @@
+/* ---- PLAY ---- */
+
+/* song tags */
+#tag-list {
+    overflow: hidden;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#tag-list li {
+    display: inline-flex;
+    margin: 3px;
+    border-radius: 10px;
+    padding: 3px 6px;
+    color: #333333;
+    border: 1px solid #aaaaaa;
+    background-color: #ffffff;
+}
+
+#tag-list li button {
+    margin-right: 3px;
+}
+
+/* song stats */
+.song-stats {
+    padding: 8px 5px 10px 5px;
+    vertical-align: middle;
+}
+
+.song-stats ul {
+    margin: 0;
+}
+
+.song-stats li span.badge {
+    margin-right: 10px;
+}
+
+/* song lyrics */
+#report-btn {
+    background-color: #ffffff;
+    border-color: #CC3333;
+    color: #CC3333;
+    overflow: hidden;
+    max-width: 23px;
+    -webkit-transition: max-width 0.20s ease-in;
+    transition: max-width 0.20s ease-in;
+}
+
+#report-btn:hover {
+    max-width: 150px;
+    -webkit-transition: max-width 0.20s ease-in;
+    transition: max-width 0.20s ease-in;
+    background-color: #ffffff;
+}
+
+.song-lyrics {
+    font-size: 150%;
+    line-height: 170%;
+}
+
+.song-lyrics .form-group {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.song-lyrics .form-group .tooltip {
+    width: 60%;
+}
+
+.song-lyrics input[type="text"],
+select.song-lyrics.form-control {
+    background: transparent;
+    border: none;
+    border-bottom: 2px dotted #333333;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-size: 90%;
+    text-align: center;
+}
+
+.song-lyrics input[type="text"]:focus,
+select.song-lyrics.form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #4286f4;
+}
+
+.song-lyrics .form-group .input-group-addon {
+    padding-left: 3px;
+    padding-right: 0;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.song-lyrics .form-group .glyphicon {
+    top: 0;
+    opacity: 0.5;
+}
+
+.song-lyrics .form-group .glyphicon:hover {
+    opacity: 0.7;
+}
+
+#results-modal #score-display {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#mistake-display li {
+    border-radius: 5px;
+    padding: 6px 8px;
+    margin: 2px;
+    font-size: 120%;
+    line-height: 130%;
+}
+
+/* ---- DEVICE SPECIFIC ---- */
+
+@media (max-width: 767px) {
+    .affix {
+        position: static;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .affix {
+        position: static;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .affix-top {
+        position: static;
+    }
+
+    .affix {
+        position: fixed !important;
+        width: 293px;
+        top: 20px;
+    }
+
+    .affix-bottom {
+        position: static;
+        vertical-align: bottom;
+        width: 293px;
+        top: 0;
+    }
+
+    .affix-bottom #tag-list {
+        max-height: 0;
+    }
+
+    .affix-top #tag-list {
+        max-height: 500px;
+        -webkit-transition: max-height 0.40s ease-in;
+        transition: max-height 0.40s ease-in;
+    }
+
+    .affix #tag-list {
+        max-height: 0;
+        -webkit-transition: max-height 0.20s ease-in;
+        transition: max-height 0.20s ease-in;
+    }
+}
+
+@media (min-width: 1200px) {
+    .affix-top {
+        position: static;
+    }
+
+    .affix {
+        position: fixed !important;
+        width: 360px;
+        top: 20px;
+    }
+
+    .affix-bottom {
+        position: static;
+        vertical-align: bottom;
+        width: 360px;
+        top: 0;
+    }
+
+    .affix-bottom #tag-list {
+        max-height: 0;
+    }
+
+    .affix-top #tag-list {
+        max-height: 500px;
+        -webkit-transition: max-height 0.40s ease-in;
+        transition: max-height 0.40s ease-in;
+    }
+
+    .affix #tag-list {
+        max-height: 0;
+        -webkit-transition: max-height 0.20s ease-in;
+        transition: max-height 0.20s ease-in;
+    }
+}

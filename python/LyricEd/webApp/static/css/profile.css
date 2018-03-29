@@ -1,0 +1,17 @@
+/* -- Profile -- */
+
+#keep-list tbody tr td, #history-list tbody tr td {
+    vertical-align: middle;
+}
+
+#history-list thead tr th:last-child, #history-list thead tr th:last-child {
+    width:100px;
+}
+
+#keep-list thead tr th:last-child, #keep-list tbody tr td:last-child {
+    width:100px;
+}
+
+#history-list tbody tr td:last-child, #keep-list tbody tr td:last-child {
+    text-align: right;
+}

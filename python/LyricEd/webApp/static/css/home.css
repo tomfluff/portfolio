@@ -1,0 +1,117 @@
+/* -- Home -- */
+
+.song-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    height: 450px;
+    color: white;
+    background-color: transparent;
+    text-shadow: #222 0 0 10px;
+    padding: 60px 20px;
+    margin: 0;
+}
+
+.color-enhance {
+    color: #e5127d !important;
+}
+
+.home-sep {
+    max-width: 50px;
+    border-width: 3px;
+    border-color: #e5127d;
+}
+
+.headline-text {
+    color: #444444;
+    text-shadow: #ffffff 2px 2px 3px;
+}
+
+.subline-text {
+    color: #666666;
+    line-height: 150%;
+}
+
+.play-box {
+    position: relative;
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+}
+
+.play-box .play-box-caption {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    opacity: 0;
+    color: #fff;
+    background: #e5127d;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.play-box .play-box-caption .play-box-caption-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+.play-box:hover .play-box-caption {
+    opacity: .65;
+}
+
+.play-box:focus {
+    outline: none;
+}
+
+.song-element {
+    height: 300px;
+}
+
+.srch {
+    font-family: sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 30vw;
+    margin: 0 auto;
+    min-height: 20vh;
+}
+
+.search {
+    flex: 1 1 auto;
+    color: #ffffff;
+    margin: 15px;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    font-size: 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 60px;
+    background-image: linear-gradient(to right, #C74588 0%, #990636 51%, #C74588 100%);
+}
+
+.search:hover {
+    background-position: right center;
+}
