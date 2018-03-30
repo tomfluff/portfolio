@@ -4,7 +4,8 @@ In here you will find several projects I worked on thoughout the years. They are
 
 ### Project list
 1. Python (`./python`)
- * Assorted Assignments
+ * Miscellaneous
+ * LyricEd (big scale project)
 2. Java (`./java`)
  * Red Black Tree
  * Binomial Heap
@@ -16,6 +17,6 @@ In here you will find several projects I worked on thoughout the years. They are
  * Text File Compare
  * GUI Trivia
 3. C/C++ (`./c_cpp`)
- * SPCBIR
+ * SPCBIR - Similar Image Search (big scale project)
 4. C# (`./csharp`)
- * SunnyDay
+ * SunnyDay (big scale project)
