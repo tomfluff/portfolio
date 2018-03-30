@@ -34,7 +34,9 @@ in our database, songs recently played by our users, and the top users with the 
 scores. Additionally, it leads to the rest of the screens and allows the user to log into their
 account, view their account, and search for their favorite hits.
 
-![](screenshots/home.png?raw=true)
+![](screenshots/home1.png?raw=true)
+![](screenshots/home2.png?raw=true)
+![](screenshots/home3.png?raw=true)
 
 ## Login Screen
 
@@ -42,7 +44,8 @@ The login screen can be used to log into an existing account, or to create a new
 user logs in with the wrong credentials, or tries to create an account with an existing e-mail
 or username, an error message is shown.
 
-![](screenshots/login.png?raw=true)
+![](screenshots/login1.png?raw=true)
+![](screenshots/login2.png?raw=true)
 
 ## Profile Screen
 
@@ -53,7 +56,7 @@ displayed for their convenience, as well as a list of the songs they have recent
 The user can choose to play the songs in both lists, or remove songs from the “play later”
 list. This section can be accessed only after the user has logged in.
 
-![](screenshots/profile.png?raw=true)
+![](screenshots/profile1.png?raw=true)
 
 ## Search Screen
 
@@ -65,7 +68,8 @@ displayed at the bottom of the page. The user can then choose one song to practi
 immediately after their search,and save other results for later. This section can be accessed
 only after the user has logged in.
 
-![](screenshots/search.png?raw=true)
+![](screenshots/search1.png?raw=true)
+![](screenshots/search2.png?raw=true)
 
 ## Play Screen
 
@@ -76,7 +80,8 @@ its duration, release year, and tags which the user can alter. When pressing sub
 user’s score and the correct words are displayed. This page can only be accessed after the
 user has successfully logged in.
 
-![](screenshots/play.png?raw=true)
+![](screenshots/play1.png?raw=true)
+![](screenshots/play2.png?raw=true)
 
 ## DB Update
 
