@@ -9,7 +9,7 @@ In here you will find several projects I worked on thoughout the years. They are
  * SunnyDay __(big scale project)__
 ### Python (`./python`)
  * Miscellaneous
- * LyricEd __(big scale project)__
+ * LyricEd <span style="background-color:lime;font-weight:bold;">(big scale project)</span>
 ### Java (`./java`)
  * Red Black Tree
  * Binomial Heap
