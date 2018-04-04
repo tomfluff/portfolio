@@ -4,12 +4,12 @@ In here you will find several projects I worked on thoughout the years. They are
 
 ## Project list
 ### C/C++ (`./c_cpp`)
- * SPCBIR - Similar Image Search __(big scale project)__
+ * SPCBIR - Similar Image Search *__(big scale project)__*
 ### C# (`./csharp`)
- * SunnyDay __(big scale project)__
+ * SunnyDay *__(big scale project)__*
 ### Python (`./python`)
  * Miscellaneous
- * LyricEd __(big scale project)__ <span style=“color:green;”> text goes here</span>
+ * LyricEd *__(big scale project)__*
 ### Java (`./java`)
  * Red Black Tree
  * Binomial Heap
